@@ -1,0 +1,97 @@
+/* Home.css */
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+.home {
+  background: url("./../assets/images/ladakh.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.hero__content {
+  padding: 60px 0;
+  color: #fff;
+}
+
+.hero__subtitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hero__subtitle img {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #ff6347;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.hero__img-box {
+  margin-bottom: 20px;
+}
+
+.hero__img-box img,
+.hero__img-box video {
+  width: 100%;
+  border-radius: 10px;
+  height: 350px;
+  border: 1px solid var(--secondary-color);
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding: 30px 0;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+  .hero__img-box img,
+  .hero__img-box video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .hero__img-box {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero__img-box img,
+  .hero__img-box video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}
+.featured__tour-title {
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: black;
+}

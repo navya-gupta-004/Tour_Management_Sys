@@ -6,19 +6,28 @@ import tourImg05 from "../images/tour-img05.jpg";
 import tourImg06 from "../images/tour-img06.jpg";
 import tourImg07 from "../images/tour-img07.jpg";
 
-const tours = [
+const tour = [
   {
     id: "01",
     title: "Westminister Bridge",
     city: "London",
     distance: 300,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 10,
     desc: "this is the description",
     reviews: [
       {
         name: "jhon doe",
         rating: 4.6,
+      },
+      {
+        name: "jhon doe",
+        rating: 5.0,
+      },
+      {
+        name: "jhon doe",
+        rating: 4.0,
       },
     ],
     avgRating: 4.5,
@@ -31,6 +40,7 @@ const tours = [
     city: "Indonesia",
     distance: 400,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -49,6 +59,7 @@ const tours = [
     city: "Thailand",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -67,6 +78,7 @@ const tours = [
     city: "Thailand",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -85,6 +97,7 @@ const tours = [
     city: "Indonesia",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -103,6 +116,7 @@ const tours = [
     city: "Japan",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -121,14 +135,10 @@ const tours = [
     city: "France",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+    reviews: [],
     avgRating: 4.5,
     photo: tourImg07,
     featured: false,
@@ -139,13 +149,14 @@ const tours = [
     city: "Thailand",
     distance: 500,
     price: 99,
+    address: "Somewhere",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
+      // {
+      //   name: "jhon doe",
+      //   rating: 4.6,
+      // },
     ],
     avgRating: 4.5,
     photo: tourImg03,
@@ -153,4 +164,4 @@ const tours = [
   },
 ];
 
-export default tours;
+export default tour;

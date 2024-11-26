@@ -1,70 +1,109 @@
-// import React from "react";
-// import "./../Styles/Register.css";
-
-// const Register = () => {
-//   return <div>Register</div>;
-// };
-
-// export default Register;
-// src/Register.js
-import React, { useState } from "react";
-import "./../Styles/Register.css";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import "./../Styles/Login.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
+import userIcon from "../assets/images/user.png";
+import { AuthContext } from "./../context/AuthContext";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (e) => {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    // Update credentials based on input fields
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      // Send request to the backend
+      const res = await fetch(`http://localhost:5555/api/v1/auths/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        alert(result.message || "Something went wrong");
+        return; // Stop further execution on error
+      }
+
+      // Dispatch success action and navigate to login
+      dispatch({ type: "REGISTER_SUCCESS", payload: result });
+      navigate("/login");
+    } catch (err) {
+      alert(err.message || "Failed to register");
+    }
   };
 
   return (
-    <div className="body">
-      <div className="box">
-        <div className="form-box">
-          <form onSubmit={handleSubmit}>
-            <h1>Register</h1>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <i className="ri-user-fill"></i>
-            </div>
-            <div className="input-box">
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <i className="ri-mail-fill"></i>
-            </div>
-            <div className="input-box">
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <i className="ri-lock-2-fill"></i>
-            </div>
-            <button className="submit">Register</button>
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
+    <>
+      <section>
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg="4" md="6">
+              <div className="login">
+                <div className="login__form">
+                  <div className="user">
+                    <img src={userIcon} alt="User Icon" />
+                  </div>
+                  <h2>Register</h2>
+                  <Form onSubmit={handleClick}>
+                    <FormGroup>
+                      <input
+                        type="text"
+                        placeholder="Username"
+                        required
+                        id="username" // Corrected the ID
+                        onChange={handleChange}
+                      />
+                    </FormGroup>
+                    <FormGroup>
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                        id="email"
+                        onChange={handleChange}
+                      />
+                    </FormGroup>
+                    <FormGroup>
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        id="password"
+                        onChange={handleChange}
+                      />
+                    </FormGroup>
+                    <Button
+                      className="btn primary__btn auth__btn"
+                      type="submit"
+                    >
+                      Create An Account
+                    </Button>
+                    <p style={{ color: "black" }}>
+                      Already have an account? <Link to="/login">Login</Link>
+                    </p>
+                  </Form>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
   );
 };
 

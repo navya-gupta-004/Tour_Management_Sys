@@ -1,0 +1,80 @@
+/* Booking.css */
+
+.booking {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  position: sticky;
+  top: 80px;
+}
+
+.booking__top {
+  margin-bottom: 20px;
+}
+
+.booking__top h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.booking__top span {
+  font-size: 14px;
+  color: #888;
+}
+
+.tour__rating i {
+  color: #f39c12;
+}
+
+.tour__rating {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.Booking__form h5 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+.Booking__form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.Booking__form input:focus {
+  border-color: #007bff;
+  /* box-shadow: 0 0 4px rgba(0, 123, 255, 0.2); */
+  outline: none;
+}
+.booking__info-form {
+  padding: 1rem;
+  border: 1px solid rgb(229, 231, 235);
+}
+.booking__bottom li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.booking__bottom li h5,
+.booking__bottom li span {
+  color: #888;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.booking__bottom {
+  margin-top: 1rem;
+}
+.total h5,
+.total span {
+  color: var(--heading-color) !important;
+  font-weight: 700;
+}

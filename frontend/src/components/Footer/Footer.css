@@ -1,5 +1,97 @@
-.footer__line {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* .footer {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+.footer .logo img {
+  width: 50%;
+  margin-bottom: 1rem;
+} */
+
+/* General Footer Styles */
+.footer {
+  background-color: #f9f9f9; /* Light background for better contrast */
+  padding: 40px 0; /* Adequate padding for spacing */
+  color: #333; /* Neutral color for text */
+  border-top: 1px solid #ddd; /* Border to separate the footer from content */
+}
+
+.footer__logo-img {
+  width: 140px; /* Smaller logo size for balance */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.footer__description {
+  color: #666; /* Lighter color for description text */
+  font-size: 14px;
+  line-height: 1.6; /* Better readability */
+  margin-bottom: 20px;
+}
+
+/* Social Links Styling */
+.social__links {
+  margin-top: 10px;
+}
+
+.footer__social-link {
+  font-size: 24px;
+  color: #666; /* Neutral color */
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.footer__social-link:hover {
+  color: #ff7f50; /* Coral color on hover */
+}
+
+/* Footer Titles */
+.footer__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Quick Links Styling */
+.footer__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer__list-item {
+  border: none;
+}
+
+.footer__link {
+  color: #666; /* Lighter color for links */
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease !important; /* Smooth hover effect */
+}
+
+.footer__link:hover {
+  color: #ff7f50; /* Coral color on hover for a visual indicator */
+}
+
+/* Footer Bottom */
+.footer__copyright {
+  font-size: 14px;
+  color: #999; /* Muted color for copyright text */
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd; /* Subtle separation from main footer */
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .footer {
+    text-align: center;
+  }
+
+  .social__links {
+    justify-content: center;
+  }
+
+  .footer__list-item {
+    margin-bottom: 10px; /* More compact on smaller screens */
+  }
 }

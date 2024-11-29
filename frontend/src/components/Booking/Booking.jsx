@@ -1,34 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Booking.css";
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  const [credentials, setCredentials] = useState({
-    userId: "01",
-    userEmail: "navya@gmail.com",
-    fullName: " ",
-    phoneNumber: " ",
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
+    fullName: "",
+    phoneNumber: "",
     guestSize: 1,
-    bookAt: " ",
+    bookAt: "",
   });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(credentials.guestSize) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   //set data to the server
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
+    console.log(booking);
     navigate("/thank-you");
   };
+  // try {
+  //   if (!user || user === undefined || user === null) {
+  //     return alert("please sign in before");
+  //   }
+  //   console.log("Booking data being sent:", booking);
+  //   navigate("/thank-you");
+  // }catch(err){
+  //   alert(err.message);
+  // }
+
+  // const res = await fetch(`http://localhost:5555/api/v1/booking`, {
+  //   method: "post",
+  //   headers: {
+  //     "content-type": "application/json",
+  //   },
+  //   credentials: "include",
+  //   body: JSON.stringify(booking),
+  // });
+
+  // const result = await res.json();
+
+  // if (!res.ok) {
+  //   return alert(result.message);
+  // }
+  // navigate("/thank-you");
+  //   } catch (err) {
+  //     alert(err.message);
+  //   }
+  // };
 
   return (
     <div className="booking">

@@ -1,4 +1,4 @@
-.SearchBar {
+/* .SearchBar {
   padding: 0.5rem 1rem;
   border-radius: 50px;
 
@@ -35,4 +35,96 @@
   color: #fff;
   border-radius: 5px 3px 5px 3px;
   cursor: pointer;
+}
+@media (max-width: 992px) {
+  .SearchBar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+} */
+.SearchBar {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75),
+    -5px -5px 5px 0px rgba(255, 255, 255, 0.3);
+  width: max-content;
+  margin-top: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form__group span {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.form__group input {
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 150px;
+}
+
+.form__group input:focus {
+  outline: none;
+}
+
+.form__group h6 {
+  margin-bottom: 0;
+}
+
+.form__group-fast div {
+  border-right: 2px solid #ddd;
+}
+
+.search__icon {
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 5px 3px 5px 3px;
+  cursor: pointer;
+}
+
+/* Media query for devices with a width of 992px or smaller */
+@media (max-width: 992px) {
+  .SearchBar {
+    flex-direction: column;
+    width: 100%; /* Full width for smaller screens */
+    padding: 1rem;
+    gap: 20px;
+    margin-top: 20px; /* Reduce margin for smaller screens */
+  }
+
+  .form__group {
+    flex-direction: column; /* Stack inputs vertically */
+    width: 100%; /* Stretch inputs to fit container */
+    gap: 15px;
+  }
+
+  .form__group span {
+    font-size: 1.2rem; /* Slightly smaller icons */
+  }
+
+  .form__group input {
+    width: 100%; /* Full width inputs */
+    font-size: 1rem; /* Adjust font size for better readability */
+  }
+
+  .search__icon {
+    font-size: 1.4rem; /* Slightly smaller search icon */
+    width: 100%; /* Stretch button for touch devices */
+    text-align: center; /* Center align text */
+    padding: 0.7rem;
+  }
 }

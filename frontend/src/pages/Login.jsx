@@ -35,7 +35,8 @@ const Login = () => {
 
       if (!res.ok) {
         dispatch({ type: "LOGIN_FAILURE", payload: result.message });
-        alert(result.message);
+        alert("User not registered. Please register before logging in.");
+        navigate("/register"); // Redirect to the registration page
         return;
       }
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });

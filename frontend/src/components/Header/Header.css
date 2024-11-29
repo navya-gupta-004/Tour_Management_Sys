@@ -1,6 +1,108 @@
 /* Header.css */
+/* Header.css */
 
-nav {
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.navigation .menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation .menu .nav__item {
+  position: relative;
+}
+
+.navigation .menu .nav__item a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navigation .menu .nav__item a:hover,
+.navigation .menu .nav__item .active {
+  color: #007bff;
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+}
+
+.nav__btns .btn {
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav__btns .secondary__btn {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.nav__btns .secondary__btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.nav__btns .primary__btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.nav__btns .primary__btn:hover {
+  background-color: #0056b3;
+}
+
+.nav__btns a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mobile__menu {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+
+  .mobile__menu {
+    display: block;
+  }
+}
+
+/* nav {
   background-color: #fff;
   padding: 10px 20px;
   height: 80px;
@@ -52,4 +154,4 @@ nav ul li a:hover {
   background-color: white;
   color: #ff6347;
   border: 1px solid #ff6347;
-}
+} */

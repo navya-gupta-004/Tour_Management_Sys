@@ -42,8 +42,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
-
 const PORT = 5555;
+
 import mongoose from "mongoose";
 import tourRoute from "./routes/tours.js";
 import userRoute from "./routes/user.js";
@@ -73,7 +73,7 @@ app.use("/api/v1/reviews", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Booking")
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {

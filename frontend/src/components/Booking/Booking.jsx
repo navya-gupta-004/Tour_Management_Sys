@@ -10,13 +10,10 @@ const Booking = ({ tour, avgRating }) => {
   const { user } = useContext(AuthContext);
 
   const [booking, setBooking] = useState({
-    userId: user && user._id,
-    userEmail: user && user.email,
     tourName: title,
     fullName: "",
-    phoneNumber: "",
+    phone: "",
     guestSize: 1,
-    bookAt: "",
   });
 
   const handleChange = (e) => {
@@ -27,41 +24,31 @@ const Booking = ({ tour, avgRating }) => {
   const totalAmount =
     Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
-  //set data to the server
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(booking);
-    navigate("/thank-you");
+    if (!user) {
+      alert("Please sign in before booking");
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:5555/api/v1/booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(booking),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        alert("Booking successful!");
+        navigate("/thank-you");
+      } else {
+        alert(result.message || "Booking failed");
+      }
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
   };
-  // try {
-  //   if (!user || user === undefined || user === null) {
-  //     return alert("please sign in before");
-  //   }
-  //   console.log("Booking data being sent:", booking);
-  //   navigate("/thank-you");
-  // }catch(err){
-  //   alert(err.message);
-  // }
-
-  // const res = await fetch(`http://localhost:5555/api/v1/booking`, {
-  //   method: "post",
-  //   headers: {
-  //     "content-type": "application/json",
-  //   },
-  //   credentials: "include",
-  //   body: JSON.stringify(booking),
-  // });
-
-  // const result = await res.json();
-
-  // if (!res.ok) {
-  //   return alert(result.message);
-  // }
-  // navigate("/thank-you");
-  //   } catch (err) {
-  //     alert(err.message);
-  //   }
-  // };
 
   return (
     <div className="booking">
@@ -70,17 +57,16 @@ const Booking = ({ tour, avgRating }) => {
           ${price}
           <span>/person</span>
         </h3>
-
         <span className="tour__rating d-flex align-items-center gap-1">
-          <i class="ri-star-fill"></i>
-          {avgRating === 0 ? null : avgRating}
+          <i className="ri-star-fill"></i>
+          {avgRating !== 0 && avgRating}
           <span>({reviews?.length})</span>
         </span>
       </div>
       <hr />
       <div className="Booking__form">
         <h5>Information</h5>
-        <Form className="booking__info-form" onSubmit={handleClick}>
+        <Form className="booking__info-form" onSubmit={handleSubmit}>
           <FormGroup>
             <input
               type="text"
@@ -94,19 +80,12 @@ const Booking = ({ tour, avgRating }) => {
             <input
               type="number"
               placeholder="Phone Number"
-              id="phoneNumber"
+              id="phone"
               required
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <input
-              type="date"
-              placeholder=""
-              id="bookAt"
-              required
-              onChange={handleChange}
-            />
             <input
               type="number"
               placeholder="Guest"
@@ -115,15 +94,17 @@ const Booking = ({ tour, avgRating }) => {
               onChange={handleChange}
             />
           </FormGroup>
+          <Button type="submit" className="btn primary__btn w-100 mt-4">
+            Book Now
+          </Button>
         </Form>
-
         <hr />
         <div className="booking__bottom">
           <ListGroup>
             <ListGroupItem className="border-0 px-0">
               <h5 className="d-flex align-items-center gap-1">
                 ${price}
-                <i class="ri-close-line"></i>1 person
+                <i className="ri-close-line"></i>1 person
               </h5>
               <span>${price}</span>
             </ListGroupItem>
@@ -136,12 +117,10 @@ const Booking = ({ tour, avgRating }) => {
               <span>${totalAmount}</span>
             </ListGroupItem>
           </ListGroup>
-          <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
-            Book Now
-          </Button>
         </div>
       </div>
     </div>
   );
 };
+
 export default Booking;

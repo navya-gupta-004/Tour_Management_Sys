@@ -42,7 +42,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
-const PORT = 5555;
 
 import mongoose from "mongoose";
 import tourRoute from "./routes/tours.js";
@@ -77,7 +76,7 @@ mongoose
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
-      console.log(`App is listening to port: ${PORT}`);
+      console.log(`App is listening to port: ${process.env.PORT}`);
     });
   })
   .catch((error) => {

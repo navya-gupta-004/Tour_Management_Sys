@@ -29,7 +29,9 @@ const TourDetails = () => {
     data: tour,
     loading,
     error,
-  } = useFetch(`http://localhost:5555/api/v1/tours/${id}`);
+  } = useFetch(
+    `https://tour-management-syste-backend.onrender.com/api/v1/tours/${id}`
+  );
 
   const [reviews, setReviews] = useState([]);
 
@@ -71,14 +73,17 @@ const TourDetails = () => {
         createdAt: new Date().toISOString(),
       };
 
-      const res = await fetch(`http://localhost:5555/api/v1/reviews/${id}`, {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(reviewObj),
-      });
+      const res = await fetch(
+        `https://tour-management-syste-backend.onrender.com/api/v1/reviews/${id}`,
+        {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(reviewObj),
+        }
+      );
       const result = await res.json();
       if (!res.ok) {
         alert(result.message);

@@ -16,9 +16,11 @@ const Tours = () => {
     data: tours,
     loading,
     error,
-  } = useFetch(`http://localhost:5555/api/v1/tours?page=${page}`);
+  } = useFetch(
+    `https://tour-management-syste-backend.onrender.com/api/v1/tours?page=${page}`
+  );
   const { data: tourCount } = useFetch(
-    `http://localhost:5555/api/v1/tours/search/getTourCount`
+    `https://tour-management-syste-backend.onrender.com/api/v1/tours/search/getTourCount`
   );
 
   useEffect(() => {

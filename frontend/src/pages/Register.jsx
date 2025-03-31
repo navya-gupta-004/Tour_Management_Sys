@@ -24,13 +24,16 @@ const Register = () => {
     e.preventDefault();
     try {
       // Send request to the backend
-      const res = await fetch(`http://localhost:5555/api/v1/auths/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      });
+      const res = await fetch(
+        `https://tour-management-syste-backend.onrender.com/api/v1/auths/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        }
+      );
 
       const result = await res.json();
 

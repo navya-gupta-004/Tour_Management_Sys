@@ -23,14 +23,17 @@ const Login = () => {
 
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await fetch(`http://localhost:5555/api/v1/auths/login`, {
-        method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(credentials),
-      });
+      const res = await fetch(
+        `https://tour-management-syste-backend.onrender.com/api/v1/auths/login`,
+        {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(credentials),
+        }
+      );
       const result = await res.json();
 
       if (!res.ok) {

@@ -24,6 +24,7 @@ const TourDetails = () => {
   // console.log(tour);
 
   //fetch data from database
+  // https://tour-management-syste-backend.onrender.com
 
   const {
     data: tour,
